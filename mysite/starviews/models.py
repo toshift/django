@@ -1,5 +1,8 @@
-from __future__ import unicode_literals
-
+# coding: utf-8
 from django.db import models
 
-# Create your models here.
+class stars(models.Model):
+    """評価"""
+    id = BigAutoField(primary_key=True)
+    star_level = models.IntegerField("対応評価")
+    fix_time = models.IntegerField("対応時間")

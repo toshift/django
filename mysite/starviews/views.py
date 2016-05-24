@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def starview(request):
+    return render(request, 'starviews/srarview.html', dict(form=form, book_id=book_id))

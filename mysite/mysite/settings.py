@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrapform', #django-bootsrap-form
     'guestboard',
     'bootstview',
+    'starviews',
 ]
 
 MIDDLEWARE_CLASSES = [

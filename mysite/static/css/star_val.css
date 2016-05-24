@@ -1,6 +1,6 @@
 .star-value {
     margin: auto;
-    background: url(./img/star-val.png) no-repeat;
+    background: url({% static 'img/star-val.png'%}) no-repeat;
 }
 .star-value>div {
     float: left;

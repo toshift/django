@@ -1,13 +1,77 @@
-{% extends "base.html" %}
-{% load staticfiles %}
-
-<div id="container">
-    <h1>Star Valuation</h1>
-    <p>Ex1</p>
-    <div class="star-value" name="ex1"></div>
-    <p>Ex2</p>
-    <div class="star-value" name="ex2"></div>
-    <p>Ex3</p>
-    <div class="star-value" name="ex3"></div>
-    <div class="debug">#</div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="{% static 'js/jquery^2.2.4.min.js' %}"></script>
+<title>Star Valuation</title>
+<style>
+body {
+    background: #ffffff;
+    margin: 0px;
+    text-align: center;
+    font-family: consolas;
+    user-select: none;
+}
+#container {
+    width: 600px;
+    margin: auto;
+    margin-top: 32px;
+}
+.star-value {
+    margin: auto;
+    background: url({% static 'img/star-value.png' %}) no-repeat;
+}
+.star-value>div {
+    float: left;
+}
+.debug {
+    margin-top: 32px;
+}
+</style>
+<script>
+$(function(){
+    var star_length = 5;  // 星の数
+    var star_size = 32;   // 星のサイズ(px)
+    $(".star-value").each(function(){
+        var i, fixed, container = $(this);
+        
+        // 枠
+        container.css({
+            width: star_size * star_length,
+            height: star_size,
+            backgroundPositionX: -star_size * star_length
+        });
+        
+        // 判定用ブロック
+        for(i = 0; i < star_length; i++){
+            $("<div></div>")
+                .css({
+                    width: star_size,
+                    height: star_size,
+                })
+                .appendTo(container);
+        }
+        
+        // イベント
+        container.find("div")
+            .on("mouseenter", function(){
+                if(fixed) return;
+                container.css("background-position-x", 
+                    star_size * ($(this).index() + 1 - star_length));
+            })
+            .on("mouseleave", function(){
+                if(fixed) return;
+                container.css("background-position-x", -star_size * star_length);
+            })
+            .on("click", function(){
+                fixed = true;
+                container.css("background-position-x", 
+                    star_size * ($(this).index() + 1 - star_length));
+                $(".debug").html(container.attr("name") + " Valued: " + ($(this).index() + 1));
+            });
+    });
+});
+</script>
+</head>
+</body>
+</html>

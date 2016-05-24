@@ -15,7 +15,22 @@ def book_list(request):
 
 def book_edit(request, book_id=None):
     """書籍の編集"""
-    return HttpResponse('書籍の編集')
+#    return HttpResponse('書籍の編集')
+
+    if book_id:
+        book = get_object_or_404(Book, pk=book_id)
+    else:
+        book = Book()
+    
+    if request.method == 'POST': # POSTされたrequestでーたからフォームを作成
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():    # フォームのバリデーション
+            book = form.save(commit=False)
+            book.save()
+            return redirect('bootstview:book_list')
+    else: # GETの時
+        form = BookForm(instance=book)    # book インスタンスからフォームを作成
+    return render(request, 'bootstview/book_edit.html', dict(form=form, book_id=book_id))
 
 
 def book_del(request, book_id):

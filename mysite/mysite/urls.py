@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^hello/', include('hello.urls', namespace='hello')),
     url(r'^guestboard/', include('guestboard.urls', namespace='guestboard')),
     url(r'^bootstview/', include('bootstview.urls', namespace='bootstview')),
+    url(r'^starviews/', include('starviews.urls', namespace='starviews')),
 ]

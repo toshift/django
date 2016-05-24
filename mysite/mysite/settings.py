@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hello',
+    'bootstrapform', #django-bootsrap-form
     'guestboard',
+    'bootstview',
 ]
 
 MIDDLEWARE_CLASSES = [

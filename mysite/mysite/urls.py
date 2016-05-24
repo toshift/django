@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello/', include('hello.urls', namespace='hello')),
     url(r'^guestboard/', include('guestboard.urls', namespace='guestboard')),
+    url(r'^bootstview/', include('bootstview.urls', namespace='bootstview')),
 ]

@@ -3,6 +3,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from bootstview.models import Book
+from bootstview.forms import BookForm
 
 
 def book_list(request):

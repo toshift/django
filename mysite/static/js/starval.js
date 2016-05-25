@@ -5,7 +5,7 @@ $(function(){
         var i, fixed, container = $(this);
         
         // 枠
-        star_val.css({
+        container.css({
             width: star_size * star_length,
             height: star_size,
             backgroundPositionX: -star_size * star_length
